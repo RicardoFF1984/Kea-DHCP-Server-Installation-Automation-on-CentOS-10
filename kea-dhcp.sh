@@ -4,24 +4,24 @@
 sudo dnf -y update
 sudo dnf -y install kea
 interface2=$(ip -brief addr | grep UP | sed -n '2p' | awk '{print $1}')
-  echo "Escolha a tua rede:"
+  echo "Identifiy your network in the format xxx.xxx.xxx.xxx/yy:"
   read rede
 
-	echo "Escolha o teu ip:"
+	echo "Identify your Ip address in the format xxx.xxx.xxx.xxx/yy:"
 	read ip
 
 	#Inserir Gateway
-	echo "Defina o gateway:"
+	echo "Identify your gateway in the format xxx.xxx.xxx.xxx:"
 	read gateway
 
 	#Inserir DNS
-	echo "Escolha o teu DNS:"
+	echo "Identify your Dns address in the format xxx.xxx.xxx.xxx:"
 	read dns
  
 
-  echo "Insere o IP inicial da Pool:"
+  echo "Identify Pool´s starting IP:"
   read ip_start
-  echo "Insere o IP final da Pool:"
+  echo "Identify Pool´s ending IP:"
   read ip_end
 
 
@@ -29,7 +29,7 @@ sudo ip link set "$interface2" up
 sudo ip addr add "$ip" dev "$interface2"
 sudo ip route add default via "$gateway"
 
-echo "Qual é o teu domínio?"
+echo "Set your domain (.net, .local, .com):"
 read domain
 
 
